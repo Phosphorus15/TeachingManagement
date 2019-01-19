@@ -17,7 +17,7 @@ int main() {
     sqlite3_exec(db, "insert into students values(180120, 'Bravo')", nullptr, nullptr, nullptr);
     char **dbResult;
     int row, column;
-    int index = 1;
+    //int index = 1;
     sqlite3_get_table(db, "select * from students", &dbResult, &row, &column, nullptr);
     std::cout << row << " " << column << std::endl;
     sqlite3_free_table(dbResult);
