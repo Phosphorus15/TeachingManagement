@@ -19,11 +19,6 @@ int main() {
     int row, column;
     int index;
     sqlite3_get_table(db, "select * from students", &dbResult, &row, &column, nullptr);
-    for(int i = 0 ; i < row ; i ++) {
-        for(int j = 0 ; j < column; j ++) {
-
-        }
-    }
     std::cout << row << " " << column << std::endl;
     sqlite3_free_table(dbResult);
     sqlite3_close(db);
