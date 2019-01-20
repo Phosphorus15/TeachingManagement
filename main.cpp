@@ -25,14 +25,9 @@ enum type {
 
 type check_login(std::string username, std::string password) {return admin;}
 
-student[] list_all_students() {
-    student s1,s2;
-    return {s1, s2};
-}
-
 void login() {
     console::clearscreen();
-    check_login()
+
     std::cin.get();
 }
 
