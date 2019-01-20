@@ -1,6 +1,7 @@
 #include <iostream>
 #include <iomanip>
 #include "console.h"
+#include "db/DAO.h"
 
 extern "C" {
 #include "sqlite3/sqlite3.h"
