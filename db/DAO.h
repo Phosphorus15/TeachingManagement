@@ -10,6 +10,26 @@
 #include <sstream>
 #include <vector>
 
+namespace Convert {
+
+    template<class T>
+    T toNumeric(const std::string &str, T &value) {
+        std::istringstream in(str);
+        in >> value;
+        return value;
+    }
+
+    void split(const std::string &str, std::vector<std::string> &out) {
+
+    }
+
+    std::string merge(const std::vector<std::string> strs) {
+        if(strs.size() == 0) return "";
+        else if(strs.size())
+    }
+
+}
+
 namespace DAO {
 
     class Database {
@@ -38,34 +58,27 @@ namespace DAO {
 
     class Result {
     private:
-        char *** result;
+        char **result;
         int nRow, nColumn;
     public:
-        std::string getColumn(int index);
+        std::string getColumn(int index) {
+            return std::string(result[index]);
+        }
 
-        std::string getValue(int row, int column);
+        std::string getValue(int row, int column) {
+            return std::string(result[nColumn + row * nColumn + column]);
+        }
 
-        int getIntValue(int row, int column);
+        int size() {
+            return nRow;
+        }
+
+        int getIntValue(int row, int column) {
+            int result;
+            return Convert::toNumeric(getValue(row, column), result);
+        }
 
     };
-
-}
-
-namespace Convert {
-
-    template<class T>
-    void toNumeric(const std::string &str, T &value) {
-        std::istringstream in(str);
-        in >> value;
-    }
-
-    void split(const std::string &str, std::vector<std::string> &out) {
-
-    }
-
-    std::string merge(const std::vector<std::string> strs) {
-
-    }
 
 }
 
