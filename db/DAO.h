@@ -47,35 +47,18 @@ namespace Convert {
 
 namespace DAO {
 
-    class Database {
-    private:
-        sqlite3 *dbHandle;
-
-        const char *file;
-    public:
-        Database(const char *file) {
-            this->file = file;
-        }
-
-        int open() {
-            return sqlite3_open(file, &dbHandle);
-        }
-
-        int close() {
-            return sqlite3_close(dbHandle);
-        }
-
-        void exec(const char *stmt, char **errmsg);
-
-        void query(const char *stmt, char ***result, char **errmsg);
-
-    };
-
     class Result {
     private:
         char **result;
+
         int nRow, nColumn;
     public:
+
+        Result(char ** result, int row, int column) {
+            this->result = result;
+            nRow = row, nColumn = column;
+        }
+
         std::string getColumn(int index) {
             return std::string(result[index]);
         }
@@ -95,6 +78,48 @@ namespace DAO {
 
     };
 
+    class Database {
+    private:
+        sqlite3 *dbHandle;
+
+        const char *file;
+    public:
+        Database(const char *file) {
+            this->file = file;
+        }
+
+        int open() {
+            return sqlite3_open(file, &dbHandle);
+        }
+
+        int close() {
+            return sqlite3_close(dbHandle);
+        }
+
+        void exec(const char *stmt, char **errmsg) {
+            sqlite3_exec(dbHandle, stmt, nullptr, nullptr, errmsg);
+        }
+
+        void query(const char *stmt, Result ** result, char **errmsg) {
+            int row, column;
+            char ** res;
+            sqlite3_get_table(dbHandle, stmt, &res, &row, &column, errmsg);
+            (*result) = new Result(res, row, column);
+        }
+
+    };
+
+}
+
+int m() {
+    DAO::Database db("test.db");
+    db.open();
+    db.exec("", nullptr);
+    DAO::Result * result;
+    db.query("select * from students", &result, nullptr);
+    result->size();
+    result->getValue(0, 0);
+    db.close();
 }
 
 #endif //TEACHINGMANAGEMENT_DAO_H
