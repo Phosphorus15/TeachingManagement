@@ -7,7 +7,7 @@
 
 #include <iostream>
 
-struct Student{
+struct Student {
     int ID;
     std::string name;
     char gender;
@@ -23,6 +23,7 @@ struct Teacher {
     char gender;
     std::string professional_title;
     int course[5];
+
 
 };
 

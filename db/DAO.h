@@ -22,9 +22,13 @@ namespace DAO {
             this->file = file;
         }
 
-        int open();
+        int open() {
+            return sqlite3_open(file, &dbHandle);
+        }
 
-        int close();
+        int close(){
+            return sqlite3_close(dbHandle);
+        }
 
         void exec(const char *stmt, char **errmsg);
 
