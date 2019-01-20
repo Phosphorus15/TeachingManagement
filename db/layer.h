@@ -5,11 +5,24 @@
 #ifndef TEACHINGMANAGEMENT_LAYER_H
 #define TEACHINGMANAGEMENT_LAYER_H
 
-struct Student{
+#include <iostream>
 
+struct Student{
+    int ID;
+    std::string name;
+    char gender;
+    std::string clazz;
+    std::string birth;
+    std::string source;
+    std::string tel;
 };
 
 struct Teacher {
+    int ID;
+    std::string name;
+    char gender;
+    std::string professional_title;
+    int course[5];
 
 };
 
