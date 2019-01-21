@@ -106,9 +106,10 @@ void reset1() {
 }
 
 #include "score_list.h"
+#include "teacher
 
 int main() {
-    score_list::scorelist();
+    teacher_main::teacher_infoormation();
     std::cin.get();
     return 0;
 }
