@@ -17,12 +17,12 @@ extern "C" {
 
 using namespace console::color;
 
-namespace teacher_information{
+namespace student_information{
 
     const std::string options[5]={"Browse  Student","Append  Student","Edit    Student","Remove  Student","Return"};
 
 
-    void teacher_information(){
+    void student_information(){
         console::clearscreen();
         std::string text ="|~***~***~***~***~***~***~***~***~***~***~***~***~***~|\n"
                "|~                                                   ~|\n"
