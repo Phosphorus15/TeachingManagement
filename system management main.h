@@ -25,7 +25,7 @@ std::string get_username() {
     return "admin";
 }
 
-namespace student_main {
+namespace system_management_main {
 
 
     enum type {
