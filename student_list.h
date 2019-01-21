@@ -28,8 +28,8 @@ namespace student_list {
     };
 
     std::vector<Student> get_student() {
-        return {{01,"class01","xilin",'m',2001/12/1,"js","2232"},
-                {02,"class01","Jhone",'f',2002/11/2,"hn","23242"}};
+        return {{01,"class01","xilin",'m',"2001/12/1","js","2232"},
+                {02,"class01","Jhone",'f',"2002/11/2","hn","23242"}};
     }
 
     const std::string header = "|------------------------------------------------------------------------------------|\n"
