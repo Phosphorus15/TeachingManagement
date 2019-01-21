@@ -23,8 +23,6 @@ struct Teacher {
     char gender;
     std::string professional_title;
     int course[5];
-
-
 };
 
 #endif //TEACHINGMANAGEMENT_LAYER_H
