@@ -56,7 +56,7 @@ namespace add_teacher_information {
         std::cin>>teacher.name;
         std::cout<<"性别:";
         std::cin>>teacher.gender;
-        std::cout<<"出生日期:";
+        std::cout<<"教师职称:";
         std::cin>>teacher.professional_title;
         save_add_Teacher(teacher);
         std::cout <<setc(yellow)<< "保存成功!" << std::endl;
