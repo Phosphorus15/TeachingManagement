@@ -30,7 +30,7 @@ namespace User_management_menu{
         console::clearscreen();
         std::string text ="|~***~***~***~***~***~***~***~***~***~***~***~***~***~|\n"
                           "|~                                                   ~|\n"
-                          "|*         teacher user management menu              *|\n"
+                          "|*                user management menu               *|\n"
                           "|~                                                   ~|\n"
                           "|~***~***~***~***~***~***~***~***~***~***~***~***~***~|\n"
                           "|*                                                   *|\n"
