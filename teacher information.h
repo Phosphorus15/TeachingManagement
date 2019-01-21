@@ -19,7 +19,7 @@ using namespace console::color;
 
 namespace teacher_information{
 
-    const std::string options[5]={"Browse  Student  ","Append  Student","Edit    Student ","Remove  Student ","Return "};
+    const std::string options[5]={"Browse  Student","Append  Student","Edit    Student","Remove  Student","Return"};
 
 
     void teacher_information(){
@@ -45,9 +45,10 @@ namespace teacher_information{
         int s = 0;
         while (true) {
             console::clearscreen();
-            const int x = 14;
+            std::cout<<text<<std::endl;
+            const int x = 18;
             for (int i = 0; i < 5; i++) {
-                console::setcursor(x, static_cast<console::u16>(6+ i));
+                console::setcursor(x, static_cast<console::u16>(6+ 2*i));
                 if (i == s) std::cout << setc(black, white, false);
                 std::cout << options[i] << std::flush;
                 if (i == s) std::cout << resetc();
