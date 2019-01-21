@@ -36,7 +36,7 @@ void login() {
 }
 
 
-void mainmenu() {
+void Teacher_centermeau() {
     console::clearscreen();
     std::cout<<"|*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*|\n"
                "|*   Welome[     Li    ]           *|\n"
@@ -120,12 +120,4 @@ void reset1() {
     std::cout << std::setw(2) << ' ' << std::flush;
 }
 
-
-
-
-int main() {
-    mainmenu();
-    std::cin.get();
-    return 0;
-}
 
