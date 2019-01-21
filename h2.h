@@ -1,0 +1,8 @@
+//
+// Created by Phosphorus15 on 2019/1/21.
+//
+
+#ifndef TEACHINGMANAGEMENT_H2_H
+#define TEACHINGMANAGEMENT_H2_H
+
+#endif //TEACHINGMANAGEMENT_H2_H
