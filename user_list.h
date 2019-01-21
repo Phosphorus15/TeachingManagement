@@ -31,7 +31,7 @@ namespace user_list {
                                "|     Name         | Password   |   Account_Type  |\n"
                                "|------------------+------------+-----------------|\n";
 
-    const std::string item = "|                  |            |                 |\n"
+    const std::string item = "|%18s|%12d|%17s|\n"
                              "|------------------+------------+-----------------|\n";
 
     void userlist() {
