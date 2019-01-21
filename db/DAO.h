@@ -20,12 +20,27 @@ namespace Convert {
     }
 
     void split(const std::string &str, std::vector<std::string> &out) {
-
+        std::string buffer;
+        for (auto it = str.begin(); it != str.end(); it++) {
+            if (*it == ',' && !buffer.empty()) {
+                out.push_back(buffer);
+                buffer.clear();
+            } else {
+                buffer += *it;
+            }
+        }
+        if (!buffer.empty()) out.push_back(buffer);
     }
 
-    std::string merge(const std::vector<std::string> strs) {
-        if (strs.size() == 0) return "";
-        else if (strs.size())
+    std::string merge(const std::vector<std::string> &strs) {
+        if (strs.empty()) return "";
+        else if (strs.size() == 1) return strs[0];
+        std::ostringstream concat;
+        concat << strs[0];
+        for (auto it = strs.begin() + 1; it != strs.end(); it++) {
+            concat << ',' << (*it);
+        }
+        return concat.str();
     }
 
 }
