@@ -1,6 +1,8 @@
-#include <iostream>
+/*#include <iostream>
 #include <iomanip>
 #include "console.h"
+
+void test();
 
 extern "C" {
 #include "sqlite3/sqlite3.h"
@@ -22,7 +24,12 @@ int main() {
     std::cout << row << " " << column << std::endl;
     sqlite3_free_table(dbResult);
     sqlite3_close(db);
-    std::cout << setc(blue) << "test" << setc(yellow) << "color" << resetc() << "system" << std::endl;
-    std::cin.get();
+    test();
     return 0;
 }
+
+void test() {
+    std::cout << setc(blue) << "test" << setc(yellow) << "color" << resetc() << "system" << std::endl;
+    std::cin.get();
+}
+*/
