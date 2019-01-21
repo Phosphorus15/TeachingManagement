@@ -13,91 +13,94 @@ extern "C" {
 
 using namespace console::color;
 
-const int KEY_UP = 72;
-const int KEY_DOWN = 80;
-
-void reset1();
-void reset2();
-void reset3();
-
-enum type {
-    student, teacher, admin, error
-};
-
-type check_login(std::string username, std::string password) {return admin;}
-
-void login() {
-    console::clearscreen();
-
-    std::cin.get();
+// TODO
+std::string get_username() {
+    return "admin";
 }
 
+namespace student_main {
 
-void student_mainmeau() {
-    console::clearscreen();
-    std::cout<<"|*********************************************************|\n"
-               "|               [                     ]                   |\n"
-               "|                Welcome            to                    |\n"
-               "|              Student    Center    Menu                  |\n"
-               "|---------------------------------------------------------|\n"
-               "|                                                         |\n"
-               "|                     Main   Menu                         |\n"
-               "|                    Choose  Course                       |\n"
-               "|                    Display Score Table                  |\n"
-               "|                    Exit System                          |\n"
-               "|                                                         |\n"
-               "|*********************************************************|"<<std::endl;
+    void reset1();
 
-    int ch;
-    int s = 1;
+    void reset2();
 
-    console::setcursor(18, 7);
-    std::cout << setc(black, white, false) << resetc() << std::flush;
-    console::setcursor(18, 7);
-    while (true) {
-        ch = getch();
-        if (ch == 224) {
+    void reset3();
+
+    enum type {
+        student, teacher, admin, error
+    };
+
+    type check_login(std::string username, std::string password) { return admin; }
+
+    void login() {
+        console::clearscreen();
+
+        std::cin.get();
+    }
+
+    const std::string options[3] = {"Choose  Course", "Display Score Table", "Exit System"};
+
+    void student_mainmenu() {
+        console::clearscreen();
+        std::string text = "|*********************************************************|\n"
+                           "|               [                     ]                   |\n"
+                           "|                Welcome            to                    |\n"
+                           "|              Student    Center    Menu                  |\n"
+                           "|---------------------------------------------------------|\n"
+                           "|                                                         |\n"
+                           "|                     Main   Menu                         |\n"
+                           "|                                                         |\n"
+                           "|                                                         |\n"
+                           "|                                                         |\n"
+                           "|                                                         |\n"
+                           "|*********************************************************|";
+
+        int ch;
+        int s = 0;
+        std::string username = get_username();
+        while (true) {
+            console::clearscreen();
+            std::cout << text << std::endl;
+            console::setcursor(static_cast<console::u16>(27 - username.length() / 2), 1);
+            std::cout << username << std::flush;
+            const int x = 20;
+            for (int i = 0; i < 3; i++) {
+                console::setcursor(x, static_cast<console::u16>(7 + i));
+                if (i == s) std::cout << setc(black, white, false);
+                std::cout << options[i] << std::flush;
+                if (i == s) std::cout << resetc();
+            }
             ch = getch();
-            if (ch == KEY_UP) {
-                if (s > 1) s--;
-            } else if (ch == KEY_DOWN) {
-                if (s < 3) s++;
+            if (ch == 224) {
+                ch = getch();
+                if (ch == KEY_UP) {
+                    if (s > 0) s--;
+                } else if (ch == KEY_DOWN) {
+                    if (s < 2) s++;
+                }
+            } else {
+                if (ch == '\r') {
+                    if (s == 2) exit(0);
+                }
             }
         }
-        if (s == 1) {
-            console::setcursor(18,7);
-            std::cout << setc(black, white, false) << std::setw(2) << ' ' << resetc() << std::flush;
-            reset3();
-            console::setcursor(18, 7);
-        } else if (s == 2) {
-            console::setcursor(18, 8);
-            std::cout << setc(black, white, false) << std::setw(2) << ' ' << resetc() << std::flush;
-            reset2();
-            console::setcursor(18, 8);
-        } else {
-            console::setcursor(18, 9);
-            std::cout << setc(black, white, false) << std::setw(2) << ' ' << resetc() << std::flush;
-            reset1();
-            console::setcursor(18, 9);
-        }
     }
+
+    void reset3() {
+        console::setcursor(18, 9);
+        std::cout << std::setw(2) << ' ' << std::flush;
+    }
+
+    void reset2() {
+        console::setcursor(18, 8);
+        std::cout << std::setw(2) << ' ' << std::flush;
+    }
+
+    void reset1() {
+        console::setcursor(18, 7);
+        std::cout << std::setw(2) << ' ' << std::flush;
+    }
+
 }
-
-void reset3() {
-    console::setcursor(18, 9);
-    std::cout << std::setw(2) << ' ' << std::flush;
-}
-
-void reset2() {
-    console::setcursor(18, 8);
-    std::cout << std::setw(2) << ' ' << std::flush;
-}
-
-void reset1() {
-    console::setcursor(18, 7);
-    std::cout << std::setw(2) << ' ' << std::flush;
-}
-
-
 
 

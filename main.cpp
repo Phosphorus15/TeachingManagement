@@ -1,6 +1,10 @@
+const int KEY_UP = 72;
+const int KEY_DOWN = 80;
+
 #include <iostream>
 #include <iomanip>
 #include "console.h"
+#include "student main menu.h"
 #include <cstdio>
 #include <conio.h>
 
@@ -11,9 +15,6 @@ extern "C" {
 }
 
 using namespace console::color;
-
-const int KEY_UP = 72;
-const int KEY_DOWN = 80;
 
 void reset1();
 
@@ -104,8 +105,10 @@ void reset1() {
     std::cout << std::setw(12) << ' ' << std::flush;
 }
 
+#include "course_list.h"
+
 int main() {
-    mainmenu();
+    course_list::courselist();
     std::cin.get();
     return 0;
 }
