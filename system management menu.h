@@ -21,11 +21,12 @@ extern "C" {
 using namespace console::color;
 
 // TODO
-std::string get_username() {
-    return "admin";
-}
+
 //属于那种类型？？
 namespace system_management_main {
+    std::string get_username() {
+        return "admin";
+    }
 
 
     enum type {
@@ -40,22 +41,23 @@ namespace system_management_main {
         std::cin.get();
     }
 
-    const std::string options[5] = {"Student  Manage", " Teacher  Manage",
+    const std::string options[5] = {"Student  Manage", "Teacher  Manage",
                                     "User     Manage", "Courses  Manage", "Exit     System"};
 
     void system_management_mainmenu() {
         console::clearscreen();
-        std::string text = "|-------------------------------------------------|\n"
-                           "|            [                   ]                |\n"
-                           "|             Welcome   ~~~~~   to                |\n"
-                           "|           System  Management  Menu              |\n"
-                           "|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|\n"
-                           "|               Student  Manage                   |\n"
-                           "|               Teacher  Manage                   |\n"
-                           "|               User     Manage                   |\n"
-                           "|               Courses  Manage                   |\n"
-                           "|               Exit     System                   |\n"
-                           "|-------------------------------------------------|\n";
+        std::string text = "|&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&|\n"
+                           "|*           [                   ]               *|\n"
+                           "|*            Welcome   ~~~~~   to               *|\n"
+                           "|*          System  Management  Menu             *|\n"
+                           "|*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*|\n"
+                           "|*                                               *|\n"
+                           "|*                                               *|\n"
+                           "|*                                               *|\n"
+                           "|*                                               *|\n"
+                           "|*                                               *|\n"
+                           "|*                                               *|\n"
+                           "|&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&|\n";
 
         int ch;
         int s = 0;
