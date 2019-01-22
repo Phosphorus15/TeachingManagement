@@ -56,7 +56,7 @@ struct AdminTeacherlist {
 
 };
 
-struct Auser {
+struct AdminUser {
     unsigned long long Num;
     unsigned int Password;
     std::string AccountType;
