@@ -10,20 +10,19 @@ extern "C" {
 using namespace console::color;
 
 int main() {
-    sqlite3 *db;
-    sqlite3_open("test.sqlite", &db);
-    sqlite3_exec(db, "create students(id int, name varchar(128))", nullptr, nullptr, nullptr);
-    sqlite3_exec(db, "create table if not exists teachers(id int, name varchar(128))", nullptr, nullptr, nullptr);
-    sqlite3_exec(db, "insert into students values(180121, 'Stephen')", nullptr, nullptr, nullptr);
-    sqlite3_exec(db, "insert into students values(180120, 'Bravo')", nullptr, nullptr, nullptr);
-    char **dbResult;
-    int row, column;
-    int index;
-    sqlite3_get_table(db, "select * from students", &dbResult, &row, &column, nullptr);
-    std::cout << row << " " << column << std::endl;
-    sqlite3_free_table(dbResult);
-    sqlite3_close(db);
-    std::cout << setc(blue) << "test" << setc(yellow) << "color" << resetc() << "system" << std::endl;
+    DAO::Database db("xietian.db");
+    DAO::Result * result;
+    db.open();
+    db.query("select * from studentM where birth > '2000-6-6'", & result, nullptr);
+    std::cout << result->size() << std::endl;
+    for(int i = 0 ; i < result->size() ; i ++) {
+        for(int j = 0 ; j < 8 ; j ++) {
+            std::cout << result->getValue(i, j) << std::endl;
+        }
+        std::cout << std::endl;
+    }
+    db.close();
+    std::cout << std::flush;
     std::cin.get();
     return 0;
 }
