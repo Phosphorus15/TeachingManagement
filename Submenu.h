@@ -28,16 +28,16 @@ namespace submenu {
 
     const std::string options[4] = {"List Offered Course", "Choose a Course", "Browse selected course","Return"};
 
-    void submenumenu() {
+    void submenu() {
         console::clearscreen();
         std::string text ="|*********************************************************|\n"
                           "|*                                                       *|\n"
                           "|*                      Submenu                          *|\n"
                           "|*                                                       *|\n"
-                          "|*                  List Offered Course                  *|\n"
-                          "|*                  Choose a Course                      *|\n"
-                          "|*                  Browse selected course               *|\n"
-                          "|*                  Return                               *|\n"
+                          "|*                                                       *|\n"
+                          "|*                                                       *|\n"
+                          "|*                                                       *|\n"
+                          "|*                                                       *|\n"
                           "|*                                                       *|\n"
                           "|*********************************************************|\n";
 
