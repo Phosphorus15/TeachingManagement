@@ -35,19 +35,6 @@ namespace electcourse {
         }
     }
 
-    struct Course {
-        std::string name;
-        int hour;
-        int credit;
-        std::string teacher;
-    };
-
-    Course get_course(std::string id) {
-        return {"GIS", 48, 3, "Mr. Z"};
-    }
-
-    void save_elect(std::string id, std::string sid) {} // TODO
-
     void electcourse() {
         console::clearscreen();
         std::cout << "请输入您要选择的课程编号: ";
@@ -60,7 +47,7 @@ namespace electcourse {
                   <<"课程学分:"<<course.credit<<std::endl <<"任课教师:"<<course.teacher<<std::endl;
         if(confirm("确认要选修该课程吗?", 7)) {
             console::setcursor(0, 9);
-            save_elect(id, ""); // TODO
+            save_elect(id);
             std::cout << setc(green) << "保存成功!" << resetc() << std::endl;
             std::cin.get();
         } else {

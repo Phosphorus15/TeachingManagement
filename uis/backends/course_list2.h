@@ -14,34 +14,22 @@ using namespace console::color;
 
 namespace course_list_partial {
 
-    struct Course {
-        int null;
-        std::string name;
-        int hour;
-        int credit;
-        int teacher_num;
-    };
-
-    std::vector<Course> get_course() {
-        return {{1, "GIS",           48, 3, 123},
-                {2, "Advanced Math", 32, 5, 122}};
-    }
-
     const std::string header = "|-----------------------------------------------------------|\n"
                                "|                     Course  List                          |\n"
                                "|------+------------------+------+--------+-----------------|\n"
-                               "| Null |    Name          | Hour | Credit |   Teacher_Num   |\n"
+                               "| CoId |    Name          | Hour | Credit |   Teacher   |\n"
                                "|------+------------------+------+--------+-----------------|\n";
 
-    const std::string item = "|%6d|%18s|%6d|%8d|%17d|\n"
+    const std::string item = "|%6s|%18s|%6d|%8d|%17d|\n"
                              "|------+------------------+------+--------+-----------------|\n";
 
     void courselist2() {
         std::cout << setc(black, white, false) << "Back" << resetc() << std::endl << std::endl;
         std::cout << header << std::flush;
-        auto courses = get_course();
+        auto courses = list_course_teacher_based();
         for (auto &course : courses) {
-            printf(item.c_str(), course.null, course.name.c_str(), course.hour, course.credit, course.teacher_num);
+            printf(item.c_str(), course.id.c_str(), course.name.c_str(), course.hour, course.credit,
+                   course.teacher.c_str());
         }
         std::cin.get();
     }

@@ -14,19 +14,6 @@ using namespace console::color;
 
 namespace score_list2 {
 
-    struct Score {
-        int num;
-        std::string classnum;
-        std::string name;
-        int grade;
-
-    };
-
-    std::vector<Score> get_score() {
-        return {{1,"class01","lining",80},
-                {2,"class02","xinlin",80}};
-    }
-
     const std::string header =
             "|----------------------------------------------|\n"
             "|                  Score  List                 |\n"
@@ -35,21 +22,20 @@ namespace score_list2 {
             "|------+------------+------------------+-------+\n";
 
     const std::string item =
-            "|%6d|%12s|%18s|%7d|\n"
+            "|%6s|%12s|%18s|%7d|\n"
             "|------+------------+------------------+-------+\n";
 
     void scorelist() {
         std::cout << setc(black, white, false) << "Back" << resetc() << std::endl << std::endl;
         std::cout << header << std::flush;
-        auto scores = get_score();
+        auto scores = get_teacher_based_scores();
         for (auto &score: scores) {
-            printf(item.c_str(), score.num, score.classnum.c_str(), score.name.c_str(), score.grade);
+            printf(item.c_str(), score.num.c_str(), score.clazz.c_str(), score.name.c_str(), score.grade);
         }
         std::cin.get();
     }
 
 }
-
 
 
 #endif //TEACHINGMANAGEMENT_SCORE_LIST2_H

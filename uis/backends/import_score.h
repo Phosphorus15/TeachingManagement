@@ -39,28 +39,17 @@ namespace import_score {
         }
     }
 
-    struct Score {
-        std::string id;
-        std::string name;
-        int score;
-    };
-
-
-    void save_student_score(Score score) {
-         // TODO
-    }
-
     void import_score() {
         console::clearscreen();
         Score score;
         std::cout << "录入学生成绩--------------";
-        std::cout << "输入学号： ";
-        std::cin >> score.id;
-        std::cout << "学生：";
+        std::cout << "输入学号: ";
+        std::cin >> score.num;
+        std::cout << "学生: ";
         std::cin >> score.name;
-        std::cout << "成绩：";
-        std::cin >> score.score;
-        std::cout <<setc(yellow)<< "保存成功!" << std::endl;
+        std::cout << "成绩: ";
+        std::cin >> score.grade;
+        std::cout << setc(yellow) << "保存成功!" << std::endl;
         save_student_score(score);
         if (confirm("保存成功，是否继续录入?", 6)) {
             import_score();

@@ -52,8 +52,7 @@ namespace add_teacher_information {
         std::cout << "教师职称: ";
         std::cin >> teacher.professional_title;
         save_add_teacher(teacher);
-        std::cout << setc(yellow) << "保存成功!" << std::endl;
-        save_add_teacher(teacher);
+        std::cout << setc(green) << "保存成功!" << std::endl;
         if (confirm("保存成功，是否继续录入?", 10)) {
             add_teacher_information();
         } else {

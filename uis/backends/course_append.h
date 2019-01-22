@@ -37,33 +37,22 @@ namespace add_course_information {
             }
         }
     }
-    struct Course{
-        std::string id;
-        std::string name;
-        int hour;
-        int credit;
-        std::string teacher;
-    };
-    void save_add_Course(Course course) {
-        // TODO
-    }
     void add_course_information(){
         console::clearscreen();
         Course course;
-        std::cout<<"---请输入课程信息：";
-        std::cout<<"课程编码：";
+        std::cout << "---请输入课程信息: ";
+        std::cout << "课程编码: ";
         std::cin>>course.id;
-        std::cout<<"课程名称：";
+        std::cout << "课程名称: ";
         std::cin>>course.name;
-        std::cout<<"课时:";
+        std::cout << "课时: ";
         std::cin>>course.hour;
-        std::cout<<"学分:";
+        std::cout << "学分: ";
         std::cin>>course.credit;
-        std::cout<<"任课教师：";
+        std::cout << "任课教师: ";
         std::cin>>course.teacher;
-        save_add_Course(course);
+        save_add_course(course);
         std::cout <<setc(yellow)<< "保存成功!" << std::endl;
-        save_add_Course(course);
         if (confirm("保存成功，是否继续录入?", 10)) {
             add_course_information();
         } else {

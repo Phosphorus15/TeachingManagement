@@ -40,41 +40,26 @@ namespace add_student_information {
         }
     }
 
-    struct Student {
-        std::string id;
-        std::string clazz;
-        std::string name;
-        char gender;
-        std::string birthday;
-        std::string source;
-        long long tel;
-    };
-
-    void save_add_student(Student student) {
-        // TODO
-    }
-
     void add_student_information() {
         console::clearscreen();
         Student student;
-        std::cout << "---请输入学生信息：";
-        std::cout << "学号：";
-        std::cin >> student.id;
-        std::cout << "班号：";
-        std::cin >> student.clazz;
-        std::cout << "姓名：";
+        std::cout << "---请输入学生信息: ";
+        std::cout << "学号: ";
+        std::cin >> student.num;
+        std::cout << "班号: ";
+        std::cin >> student.classnum;
+        std::cout << "姓名: ";
         std::cin >> student.name;
-        std::cout << "性别:";
+        std::cout << "性别: ";
         std::cin >> student.gender;
-        std::cout << "出生日期:";
-        std::cin >> student.birthday;
-        std::cout << "生源:";
-        std::cin >> student.source;
-        std::cout << "电话:";
+        std::cout << "出生日期: ";
+        std::cin >> student.birth;
+        std::cout << "生源: ";
+        std::cin >> student.from;
+        std::cout << "电话: ";
         std::cin >> student.tel;
         save_add_student(student);
         std::cout << setc(yellow) << "保存成功!" << std::endl;
-        save_add_student(student);
         if (confirm("保存成功，是否继续录入?", 10)) {
             add_student_information();
         } else {

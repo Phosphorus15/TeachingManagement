@@ -20,7 +20,7 @@ namespace teacher_list {
                                "|   Num    |     Name         |Gender|     Title  |\n"
                                "|----------+------------------+------+------------|\n";
 
-    const char *item = "|%10d|%18s|%6c|%12s|\n"
+    const char *item = "|%10lld|%18s|%6c|%12s|\n"
                        "|----------+------------------+------+------------|\n";
 
 
@@ -29,17 +29,9 @@ namespace teacher_list {
         std::cout << setc(black, white, false) << "Back" << resetc() << std::endl << std::endl;
         std::cout << header << std::flush;
         auto teachers = get_teachers();
-        std::cout << "otter" << std::endl;
         for (auto &teacher: teachers) {
-            std::cout << "rec " << std::endl;
-            std::cout << teacher.tid << std::endl;
-            std::cout << teacher.name << std::endl;
-            std::cout << teacher.gender << std::endl;
-            std::cout << teacher.job.c_str() << std::endl;
             printf(item, teacher.tid, teacher.name.c_str(), teacher.gender, teacher.job.c_str());
-            std::cout << "wtf" << std::endl;
         }
-        std::cout << "otter" << std::endl;
         std::cin.get();
     }
 

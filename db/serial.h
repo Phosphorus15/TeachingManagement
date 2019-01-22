@@ -64,7 +64,7 @@ void list_teachers(std::vector<AdminTeacherlist> &list) {
         list.push_back(teacher);
     }
     std::cout << "out " << std::endl;
-    //result->free();
+    result->free();
 }
 void list_student (std::vector<AdminStudentlist> &list)
 {
