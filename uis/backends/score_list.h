@@ -5,7 +5,7 @@
 #ifndef TEACHINGMANAGEMENT_SCORE_LIST_H
 #define TEACHINGMANAGEMENT_SCORE_LIST_H
 #include <iostream>
-#include "../console.h"
+#include "../../console.h"
 #include <vector>
 
 using namespace console::color;

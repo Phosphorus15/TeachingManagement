@@ -5,11 +5,7 @@
 #ifndef TEACHINGMANAGEMENT_PRELUDE_H
 #define TEACHINGMANAGEMENT_PRELUDE_H
 
-#include <iostream>
-#include "console.h"
-#include "painting.h"
-#include <windows.h>
-#include <conio.h>
+#include "basis.h"
 
 using namespace console::color;
 
@@ -50,13 +46,13 @@ std::string read_pwd() {
     return result;
 }
 
-void launch() {
+void launch() { // 主界面，以显示为主
     std::cout << setc(cyan, black);
     std::cout << std::endl << title << resetc();
-    std::cout << setc(white, black, false) << "  Group 6 Present, this is a copyleft software under GPLv3" << resetc();
+    std::cout << setc(white, black, false) << "  Group 6 Present, this is a copyleft software under LGPLv3" << resetc();
     Sleep(100);
     auto bitmap = loadBitmap("csu1.bitmap", 121, 121);
-    paintSizedBitmap(bitmap, 0, 0, 121, 121);
+    paintSizedBitmap(bitmap, 0, 0, 121, 121); // 绘制校徽
     std::cout << std::endl << std::endl << setc(white, blue) << loginMenu << resetc();
     std::cout << setc(black, white, false);
     console::setcursor(25, 13);
@@ -75,7 +71,54 @@ void launch() {
     console::clearscreen();
     globalPassword = pwd;
     globalUsername = username;
-    while (getch() != '\r');
+}
+
+int checkLogin() {
+    DAO::Result *result;
+    passwords->fetchTable("passwords", &result); // 查询密码数据表
+    if (result->size() == 0) {
+        passwords->exec("insert into passwords values('admin', 'admin', 0)", nullptr);
+    }
+    result->free();
+    passwords->query(
+            Convert::format("select * from passwords where id = '$' and password = '$'",
+                            {globalUsername, globalPassword}).c_str(),
+            &result,
+            nullptr); // 查找对应账号密码的用户, 此处存在被SQL注入的可能     FIXME
+    if (result->size() != 1) {
+        result->free(); // 释放内存
+        return -1;
+    } else {
+        int type;
+        Convert::toNumeric(result->getValue(0, 2), type);
+        result->free();
+        return type;
+    }
+}
+
+int initDatabase() {
+    database = new DAO::Database("data.db");
+    passwords = new DAO::Database("access.db");
+    int i = 0;
+    i |= database->open();
+    i |= passwords->open();
+    i |= DAO::initClassesTable(*database);
+    i |= DAO::initStudentTable(*database);
+    i |= DAO::initTeacherTable(*database);
+    i |= DAO::initPasswordTable(*passwords);
+    return i;
+}
+
+void freeDatabase();
+
+void exitSafe() {
+    freeDatabase();
+    exit(0);
+}
+
+void freeDatabase() {
+    database->close();
+    passwords->close();
 }
 
 #endif //TEACHINGMANAGEMENT_PRELUDE_H

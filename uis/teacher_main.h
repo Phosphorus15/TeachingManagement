@@ -60,7 +60,16 @@ namespace teacher_main {
                 }
             } else {
                 if (ch == '\r') {
-                    if (s == 4) exit(0);
+                    if (s == 4) exitSafe();
+                    if (s == 0) student_list2::studentlist();
+                    if (s == 1) import_score::import_score();
+                    if (s == 2) score_list2::scorelist();
+                    if (s == 3) statistical_list::statistical_list();
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "InfiniteRecursion"
+                    teacher_mainmenu();
+#pragma clang diagnostic pop
+                    return;
                 }
             }
         }

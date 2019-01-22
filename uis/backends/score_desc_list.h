@@ -6,7 +6,7 @@
 #define TEACHINGMANAGEMENT_SCORE_LIST2_H
 
 #include <iostream>
-#include "../console.h"
+#include "../../console.h"
 #include <vector>
 
 using namespace console::color;

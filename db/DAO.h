@@ -1,3 +1,5 @@
+#include <utility>
+
 //
 // Created by Phosphorus15 on 2019/1/20.
 //
@@ -77,6 +79,7 @@ namespace DAO {
     public:
 
         Result(char **result, int row, int column) {
+            std::cout << "result constructed with " << row << " " << column << std::endl;
             this->result = result;
             nRow = row, nColumn = column;
         }
@@ -122,18 +125,54 @@ namespace DAO {
             return sqlite3_close(dbHandle);
         }
 
-        void exec(const char *stmt, char **errmsg) {
-            sqlite3_exec(dbHandle, stmt, nullptr, nullptr, errmsg);
+        int exec(const char *stmt, char **errmsg) {
+            return sqlite3_exec(dbHandle, stmt, nullptr, nullptr, errmsg);
         }
 
-        void query(const char *stmt, Result **result, char **errmsg) {
+        int query(const char *stmt, Result **result, char **errmsg) {
             int row, column;
             char **res;
-            sqlite3_get_table(dbHandle, stmt, &res, &row, &column, errmsg);
+            int ret = sqlite3_get_table(dbHandle, stmt, &res, &row, &column, errmsg);
             (*result) = new Result(res, row, column);
+            return ret;
+        }
+
+        int fetchTable(const char *table, Result **result) {
+            return query(Convert::format("select * from $", {table}).c_str(), result, nullptr);
         }
 
     };
+
+    int initPasswordTable(Database &db) {
+        return db.exec(
+                "CREATE TABLE IF NOT EXISTS [passwords]([id] VARCHAR(32) PRIMARY KEY UNIQUE, [password] varchar(128), [type] tinyint)",
+                nullptr);
+    }
+
+    int initClassesTable(Database &db) {
+        return db.exec(
+                "CREATE TABLE IF NOT EXISTS [classes]([cid] VARCHAR(32), [name] varchar(512), [credit] TINYINT, [hour] int, [tid] bigint)",
+                nullptr);
+    }
+
+    int initStudentTable(Database &db) {
+        return db.exec(
+                "CREATE TABLE IF NOT EXISTS [studentM]([stid] bigint, [name] varchar(64), [class] int, [gender] varchar, [birth] VARCHAR(32), [source] varchar(128), [phone] varchar(128))",
+                nullptr);
+    }
+
+    int initTeacherTable(Database &db) {
+        return db.exec(
+                "CREATE TABLE IF NOT EXISTS [teachercM]([tcid] bigint, [name] varchar(128), [gender] varchar, [job] varchar(128))",
+                nullptr);
+    }
+
+    int initCourseTable(std::string tid, Database &db) {
+        return db.exec(Convert::format(
+                "CREATE TABLE IF NOT EXISTS \"teacherc$\"(Tid bigint,Cid varchar(32),Sid bigint,name varchar(128),Class int, gender varchar,grade varchar(128))",
+                {std::move(tid)}).c_str(),
+                       nullptr);
+    }
 
 }
 

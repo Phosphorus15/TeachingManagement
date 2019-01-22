@@ -6,18 +6,6 @@
 #define TEACHINGMANAGEMENT_COURSE_INFORMATION_H
 
 #endif //TEACHINGMANAGEMENT_COURSE_INFORMATION_H
-#include <iostream>
-#include <iomanip>
-#include "console.h"
-#include <cstdio>
-#include <conio.h>
-
-
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wmissing-noreturn"
-extern "C" {
-#include "sqlite3/sqlite3.h"
-}
 
 using namespace console::color;
 
@@ -67,7 +55,13 @@ namespace course_information{
                 }
             } else {
                 if (ch == '\r') {
-                    if (s == 4) exit(0);
+                    if (s == 4) return;
+                    if (s == 0) course_list::courselist();
+                    if (s == 1) add_course_information::add_course_information();
+                    if (s == 2) edit_course_information::edit_course_information();
+                    if (s == 3) delete_course_information::delete_course_information();
+                    course_information();
+                    return;
                 }
             }
         }

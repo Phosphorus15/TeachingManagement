@@ -5,6 +5,7 @@
 #include <iostream>
 #include <iomanip>
 #include "../console.h"
+#include "all_uis.h"
 #include <cstdio>
 #include <conio.h>
 
@@ -63,7 +64,13 @@ namespace student_information{
                 }
             } else {
                 if (ch == '\r') {
-                    if (s == 4) exit(0);
+                    if (s == 4) return;
+                    if (s == 0) student_list::studentlist();
+                    if (s == 1) add_student_information::add_student_information();
+                    if (s == 2) edit_student_information::edit_student_information();
+                    if (s == 3) delete_student_information::delete_student_information();
+                    student_information();
+                    return;
                 }
             }
         }

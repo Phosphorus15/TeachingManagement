@@ -6,7 +6,7 @@
 #define TEACHINGMANAGEMENT_TEACHER_LIST_H
 
 #include <iostream>
-#include "../console.h"
+#include "../../console.h"
 #include <vector>
 
 using namespace console::color;
@@ -14,35 +14,32 @@ using namespace console::color;
 
 namespace teacher_list {
 
-    struct Teacher {
-        int num;
-        std::string name;
-        char gender;
-        std::string title;
-    };
-
-    std::vector<Teacher> get_teacher() {
-        return {{12,"li",'m',"jiaoshi"},
-                {13,"chen",'m',"jaioshi"}};
-    }
-
     const std::string header = "|-------------------------------------------------|\n"
                                "|                  Teacher List                   |\n"
                                "|----------+------------------+------+------------|\n"
                                "|   Num    |     Name         |Gender|     Title  |\n"
                                "|----------+------------------+------+------------|\n";
 
-    const std::string item = "|%10d|%18s|%6s|%12s|\n"
-                             "|----------+------------------+------+------------|\n";
+    const char *item = "|%10d|%18s|%6c|%12s|\n"
+                       "|----------+------------------+------+------------|\n";
 
 
     void teacherlist() {
+        console::clearscreen();
         std::cout << setc(black, white, false) << "Back" << resetc() << std::endl << std::endl;
         std::cout << header << std::flush;
-        auto teachers = get_teacher();
+        auto teachers = get_teachers();
+        std::cout << "otter" << std::endl;
         for (auto &teacher: teachers) {
-            printf(item.c_str(),teacher.num, teacher.name.c_str(),teacher.gender, teacher.title.c_str());
+            std::cout << "rec " << std::endl;
+            std::cout << teacher.tid << std::endl;
+            std::cout << teacher.name << std::endl;
+            std::cout << teacher.gender << std::endl;
+            std::cout << teacher.job.c_str() << std::endl;
+            printf(item, teacher.tid, teacher.name.c_str(), teacher.gender, teacher.job.c_str());
+            std::cout << "wtf" << std::endl;
         }
+        std::cout << "otter" << std::endl;
         std::cin.get();
     }
 

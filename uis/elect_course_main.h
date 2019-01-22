@@ -13,7 +13,7 @@ extern "C" {
 
 using namespace console::color;
 
-namespace submenu {
+namespace elect_submenu {
 
     enum type {
         student, teacher, admin, error
@@ -64,7 +64,12 @@ namespace submenu {
                 }
             } else {
                 if (ch == '\r') {
-                    if (s == 3) exit(0);
+                    if (s == 3) return;
+                    if (s == 0) course_list::courselist();
+                    if (s == 1) electcourse::electcourse();
+                    if (s == 2) course_list_partial::courselist2();
+                    submenu();
+                    return;
                 }
             }
         }

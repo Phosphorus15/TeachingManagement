@@ -6,13 +6,13 @@
 #define TEACHINGMANAGEMENT_COURSE_H
 
 #include <iostream>
-#include "../console.h"
+#include "../../console.h"
 #include <vector>
 
 using namespace console::color;
 
 
-namespace course_list2 {
+namespace course_list_partial {
 
     struct Course {
         int null;

@@ -20,7 +20,7 @@ extern "C" {
 
 using namespace console::color;
 
-namespace student_main {
+namespace teacher_manage {
 
     enum type {
         student, teacher, admin, error
@@ -33,7 +33,8 @@ namespace student_main {
         std::cin.get();
     }
 
-    const std::string options[5] = {"Browse  Teacher", "Append  Teacher", "Edit    Teacher","Remove  Teacher","Return"};
+    const std::string options[5] = {"Browse  Teacher", "Append  Teacher", "Edit    Teacher", "Remove  Teacher",
+                                    "Return"};
 
     void submenumain() {
         console::clearscreen();
@@ -70,13 +71,18 @@ namespace student_main {
                 }
             } else {
                 if (ch == '\r') {
-                    if (s == 4) exit(0);
+                    if (s == 4) return;
+                    if (s == 0) teacher_list::teacherlist();
+                    if (s == 1) add_teacher_information::add_teacher_information();
+                    if (s == 2) edit_teacher_information::edit_teacher_information();
+                    if (s == 3) delete_teacher_information::delete_teacher_information();
+                    submenumain();
+                    return;
                 }
             }
         }
     }
 }
-
 
 
 #endif //TEACHINGMANAGEMENT_TEACHER_USER_MANAGEMENT_MENU_H

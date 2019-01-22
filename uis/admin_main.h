@@ -25,7 +25,7 @@ using namespace console::color;
 //属于那种类型？？
 namespace system_management_main {
     std::string get_username() {
-        return "admin";
+        return globalUsername;
     }
 
 
@@ -41,23 +41,22 @@ namespace system_management_main {
         std::cin.get();
     }
 
-    const std::string options[5] = {"Student  Manage", "Teacher  Manage",
-                                    "User     Manage", "Courses  Manage", "Exit     System"};
+    const std::string options[4] = {"Student  Manage", "Teacher  Manage", "Courses  Manage", "Exit     System"};
 
     void system_management_mainmenu() {
         console::clearscreen();
-        std::string text = "|&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&|\n"
+        std::string text = "|-------------------------------------------------|\n"
                            "|*           [                   ]               *|\n"
-                           "|*            Welcome   ~~~~~   to               *|\n"
-                           "|*          System  Management  Menu             *|\n"
-                           "|*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*|\n"
+                           "|*                Welcome   to                   *|\n"
+                           "|*          Admin   Management  Menu             *|\n"
+                           "|*-----------------------------------------------*|\n"
                            "|*                                               *|\n"
                            "|*                                               *|\n"
                            "|*                                               *|\n"
                            "|*                                               *|\n"
                            "|*                                               *|\n"
                            "|*                                               *|\n"
-                           "|&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&|\n";
+                           "|-------------------------------------------------|\n";
 
         int ch;
         int s = 0;
@@ -68,7 +67,7 @@ namespace system_management_main {
             console::setcursor(static_cast<console::u16>(23 - username.length() / 2), 1);
             std::cout << username << std::flush;
             const int x = 16;
-            for (int i = 0; i < 5; i++) {
+            for (int i = 0; i < 4; i++) {
                 console::setcursor(x, static_cast<console::u16>(5 + i));
                 if (i == s) std::cout << setc(black, white, false);
                 std::cout << options[i] << std::flush;
@@ -80,19 +79,23 @@ namespace system_management_main {
                 if (ch == KEY_UP) {
                     if (s > 0) s--;
                 } else if (ch == KEY_DOWN) {
-                    if (s < 4) s++;
+                    if (s < 3) s++;
                 }
             } else {
-                if (ch == '\r') {
-                    if (s == 4) exit(0);
+                if (ch == '\r') { // 分别跳转
+                    if (s == 3) exitSafe();
+                    if (s == 0) student_information::student_information();
+                    if (s == 1) teacher_manage::submenumain();
+                    if (s == 2) course_information::course_information();
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "InfiniteRecursion"
+                    system_management_mainmenu();
+#pragma clang diagnostic pop
                 }
             }
         }
     }
 }
-
-
-
 
 
 #endif //TEACHINGMANAGEMENT_SYSTEM_MANAGEMENT_MAIN_H

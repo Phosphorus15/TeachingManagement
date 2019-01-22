@@ -9,11 +9,7 @@
 #include "DAO.h"
 
 DAO::Database *database;
-
-void init() {
-    database = new DAO::Database("Mengo.db");
-    database->open();
-}
+DAO::Database *passwords;
 
 void listStudentScore(u64 sid, std::vector<StudentScorelist> &scores) {
     DAO::Result *result, *classes;
@@ -55,17 +51,20 @@ void listStudentScore(u64 sid, std::vector<StudentScorelist> &scores) {
 void list_teachers(std::vector<AdminTeacherlist> &list) {
     DAO::Result *result;
     database->query("select * from teachercM", &result, nullptr);
+    std::cout << "enter " << result->size() << std::endl;
     for (int i = 0; i < result->size(); i++) {
         std::string tid = result->getValue(i, 0);
-        std::string name = result->getValue(i, 2);
-        std::string gender = result->getValue(i, 3);
-        std::string job = result->getValue(i, 4);
+        std::string name = result->getValue(i, 1);
+        std::string gender = result->getValue(i, 2);
+        std::string job = result->getValue(i, 3);
+        std::cout << "rec" << std::endl;
         u64 id = 0;
         Convert::toNumeric(tid, id);
         AdminTeacherlist teacher = {id, name, gender[0], job};
         list.push_back(teacher);
     }
-    result->free();
+    std::cout << "out " << std::endl;
+    //result->free();
 }
 void list_student (std::vector<AdminStudentlist> &list)
 {
@@ -103,7 +102,7 @@ void teacher_student_list(std::string tid, std::vector<TeacherStudentlist> &list
     result->free();
 }
 
-void TeacherScorelist(std::string tid, std::vector<TeacherStudentlist> &list) {
+/*void TeacherScorelist(std::string tid, std::vector<TeacherStudentlist> &list) {
     DAO::Result *result;
     database->query(Convert::format("select * from teacherc$", {tid}).c_str(), &result, nullptr);
     for (int i = 0; i < result->size(); i++) {
@@ -119,16 +118,7 @@ void TeacherScorelist(std::string tid, std::vector<TeacherStudentlist> &list) {
         list.push_back(t);
     }
     result->free();
-}
-
-
-
-
-int main() {
-    init();
-    std::vector<StudentScorelist> scores;
-    listStudentScore(8211180121, scores);
-}
+}*/
 
 
 #endif //TEACHINGMANAGEMENT_SERIAL_H

@@ -10,7 +10,7 @@
 
 #include <iostream>
 #include <conio.h>
-#include "../console.h"
+#include "../../console.h"
 
 using namespace console::color;
 

@@ -75,7 +75,14 @@ namespace student_main {
                 }
             } else {
                 if (ch == '\r') {
-                    if (s == 2) exit(0);
+                    if (s == 2) exitSafe();
+                    if (s == 0) elect_submenu::submenu();
+                    if (s == 1) score_list::scorelist();
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "InfiniteRecursion"
+                    student_mainmenu();
+#pragma clang diagnostic pop
+                    return;
                 }
             }
         }

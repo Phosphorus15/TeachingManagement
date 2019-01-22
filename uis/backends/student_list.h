@@ -3,11 +3,11 @@
 //
 
 
-#ifndef TEACHINGMANAGEMENT_COURSE_LIST_H
+#ifndef TEACHINGMANAGEMENT_STUDENT_LIST_H
 #define TEACHINGMANAGEMENT_COURSE_LIST_H
 
 #include <iostream>
-#include "../console.h"
+#include "../../console.h"
 #include <vector>
 
 using namespace console::color;

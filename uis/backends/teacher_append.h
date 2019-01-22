@@ -6,9 +6,10 @@
 #define TEACHINGMANAGEMENT_ADD_TEACHER_INFORMATION_H
 
 #endif //TEACHINGMANAGEMENT_ADD_TEACHER_INFORMATION_H
+
 #include <iostream>
 #include <conio.h>
-#include "../console.h"
+#include "../../console.h"
 
 using namespace console::color;
 
@@ -37,30 +38,22 @@ namespace add_teacher_information {
             }
         }
     }
-    struct Teacher{
-        std::string id;
-        std::string name;
-        char gender;
-        std::string professional_title;
-    };
-    void save_add_Teacher(Teacher teacher) {
-        // TODO
-    }
-    void add_teacher_information(){
+
+    void add_teacher_information() {
         console::clearscreen();
         Teacher teacher;
-        std::cout<<"---请输入老师信息：";
-        std::cout<<"工号：";
-        std::cin>>teacher.id;
-        std::cout<<"姓名：";
-        std::cin>>teacher.name;
-        std::cout<<"性别:";
-        std::cin>>teacher.gender;
-        std::cout<<"教师职称:";
-        std::cin>>teacher.professional_title;
-        save_add_Teacher(teacher);
-        std::cout <<setc(yellow)<< "保存成功!" << std::endl;
-        save_add_Teacher(teacher);
+        std::cout << "---请输入老师信息: " << std::endl;
+        std::cout << "工号: ";
+        std::cin >> teacher.id;
+        std::cout << "姓名: ";
+        std::cin >> teacher.name;
+        std::cout << "性别: ";
+        std::cin >> teacher.gender;
+        std::cout << "教师职称: ";
+        std::cin >> teacher.professional_title;
+        save_add_teacher(teacher);
+        std::cout << setc(yellow) << "保存成功!" << std::endl;
+        save_add_teacher(teacher);
         if (confirm("保存成功，是否继续录入?", 10)) {
             add_teacher_information();
         } else {

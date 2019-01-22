@@ -8,11 +8,11 @@
 #endif //TEACHINGMANAGEMENT_STATISTICAL_TABLE_OF_SCORE_H
 #include <iostream>
 #include <conio.h>
-#include "../console.h"
+#include "../../console.h"
 
 using namespace console::color;
 
-namespace StatisticalTableofScore{
+namespace statistical_list {
     struct Level{
         int A;
         int B;
@@ -24,7 +24,7 @@ namespace StatisticalTableofScore{
         return {1,1,1,1,1};
     }
 
-    void StatisticalTableOfScore(){
+    void statistical_list() {
         console::clearscreen();
         std::cout<<"Statistical Table of Score:"<<std::endl;
         Level level = get_level(""); // TODO
