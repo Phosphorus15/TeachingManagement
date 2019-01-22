@@ -45,7 +45,7 @@ namespace add_student_information {
         Student student;
         std::cout << "---请输入学生信息: ";
         std::cout << "学号: ";
-        std::cin >> student.num;
+        std::cin >> student.sid;
         std::cout << "班号: ";
         std::cin >> student.classnum;
         std::cout << "姓名: ";

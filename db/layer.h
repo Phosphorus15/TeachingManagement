@@ -15,9 +15,10 @@ struct StudentCourselist {
     std::string teacher;
 };
 
-struct StudentScorelist {
-    std::string cid;
+struct Score {
+    std::string num;
     std::string name;
+    std::string clazz;
     int grade;
     int credit;
 };
@@ -38,11 +39,11 @@ struct TeacherScorelist {
     int grade;
 };
 
-struct AdminStudentlist {
+struct Student {
     unsigned long long sid;
     std::string name;
+    std::string classnum;
     char gender;
-    std::string clazz;
     std::string birth;
     std::string from;
     std::string tel;

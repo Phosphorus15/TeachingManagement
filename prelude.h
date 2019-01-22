@@ -96,7 +96,7 @@ int checkLogin() {
     }
 }
 
-int initDatabase() {
+int initDatabase() { // 初始化数据库
     database = new DAO::Database("data.db");
     passwords = new DAO::Database("access.db");
     int i = 0;

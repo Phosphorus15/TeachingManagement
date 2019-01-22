@@ -157,7 +157,7 @@ namespace DAO {
 
     int initStudentTable(Database &db) {
         return db.exec(
-                "CREATE TABLE IF NOT EXISTS [studentM]([stid] bigint, [name] varchar(64), [class] int, [gender] varchar, [birth] VARCHAR(32), [source] varchar(128), [phone] varchar(128))",
+                "CREATE TABLE IF NOT EXISTS [studentM]([stid] bigint, [name] varchar(64), [class] varchar(32), [gender] varchar, [birth] VARCHAR(32), [source] varchar(128), [phone] varchar(128))",
                 nullptr);
     }
 
@@ -169,7 +169,7 @@ namespace DAO {
 
     int initCourseTable(std::string tid, Database &db) {
         return db.exec(Convert::format(
-                "CREATE TABLE IF NOT EXISTS \"teacherc$\"(Tid bigint,Cid varchar(32),Sid bigint,name varchar(128),Class int, gender varchar,grade varchar(128))",
+                "CREATE TABLE IF NOT EXISTS \"teacherc$\"(Tid bigint,Cid varchar(32),Sid bigint,name varchar(128),Class varchar(32), gender varchar,grade int)",
                 {std::move(tid)}).c_str(),
                        nullptr);
     }

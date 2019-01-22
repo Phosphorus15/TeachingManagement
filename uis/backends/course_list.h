@@ -17,7 +17,7 @@ namespace course_list {
     const std::string header = "|-------------------------------------------------------|\n"
                                "|                     Course  List                      |\n"
                                "|------+------------------+------+--------+-------------|\n"
-                               "| Null |    Name          | Hour | Credit |   Teacher   |\n"
+                               "| Null |    Name          | Hour | Credit | Teacher Id  |\n"
                                "|------+------------------+------+--------+-------------|\n";
 
     const std::string item = "|%6s|  %16s| %5d| %7d| %12s|\n"

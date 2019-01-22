@@ -26,7 +26,7 @@ namespace course_list_partial {
     void courselist2() {
         std::cout << setc(black, white, false) << "Back" << resetc() << std::endl << std::endl;
         std::cout << header << std::flush;
-        auto courses = list_course_teacher_based();
+        auto courses = list_course_student_based();
         for (auto &course : courses) {
             printf(item.c_str(), course.id.c_str(), course.name.c_str(), course.hour, course.credit,
                    course.teacher.c_str());

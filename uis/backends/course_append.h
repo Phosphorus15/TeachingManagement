@@ -49,7 +49,7 @@ namespace add_course_information {
         std::cin>>course.hour;
         std::cout << "学分: ";
         std::cin>>course.credit;
-        std::cout << "任课教师: ";
+        std::cout << "任课教师编号: ";
         std::cin>>course.teacher;
         save_add_course(course);
         std::cout <<setc(yellow)<< "保存成功!" << std::endl;

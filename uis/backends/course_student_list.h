@@ -29,7 +29,7 @@ namespace student_list2 {
         std::cout << header << std::flush;
         auto students = get_course_students();
         for (auto &student : students) {
-            printf(item.c_str(), student.num, student.classnum.c_str(), student.name.c_str(),
+            printf(item.c_str(), student.sid, student.classnum.c_str(), student.name.c_str(),
                    student.gender);
         }
         std::cin.get();

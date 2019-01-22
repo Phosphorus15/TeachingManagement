@@ -11,7 +11,7 @@
 DAO::Database *database;
 DAO::Database *passwords;
 
-void listStudentScore(u64 sid, std::vector<StudentScorelist> &scores) {
+void listStudentScore(const std::string &sid, std::vector<Score> &scores) {
     DAO::Result *result, *classes;
     database->query("select * from teachercM", &result, nullptr);
     std::vector<u64> teacherId;
@@ -23,17 +23,18 @@ void listStudentScore(u64 sid, std::vector<StudentScorelist> &scores) {
     result->free();
     for (u64 id : teacherId) {
         std::string query = Convert::format("select * from teacherc$ where Sid = $",
-                                            {Convert::toString(id), Convert::toString(sid)});
+                                            {Convert::toString(id), sid});
         database->query(query.c_str(), &result, nullptr);
         if (result->size() > 0) {
             for (int i = 0; i < result->size(); i++) {
-                StudentScorelist score;
-                score.cid = result->getValue(i, 1);
+                Score score;
+                score.num = result->getValue(i, 1);
                 int t;
                 std::string str = result->getValue(i, 6);
                 Convert::toNumeric(str, t);
                 score.grade = t;
-                std::string classQuery = Convert::format("select * from classes where Cid = '$'", {score.cid});
+                score.clazz = result->getValue(i, 4);
+                std::string classQuery = Convert::format("select * from classes where cid = '$'", {score.num});
                 database->query(classQuery.c_str(), &classes, nullptr);
                 score.name = classes->getValue(0, 1);
                 std::string credits = classes->getValue(0, 2);
@@ -66,21 +67,21 @@ void list_teachers(std::vector<AdminTeacherlist> &list) {
     std::cout << "out " << std::endl;
     result->free();
 }
-void list_student (std::vector<AdminStudentlist> &list)
-{
+
+void list_student(std::vector<Student> &list, const std::string &table = "studentM") {
     DAO::Result *result;
-    database->query("select * from studentM", &result, nullptr);
-    for(int i = 0 ; i < result -> size(); i ++) {
+    database->query(("select * from " + table).c_str(), &result, nullptr);
+    for (int i = 0; i < result->size(); i++) {
         std::string Sid = result->getValue(i, 0);
         std::string name = result->getValue(i, 1);
         std::string gender = result->getValue(i, 3);
-        std::string clazz=result->getValue(i,2);
-        std::string birth=result->getValue(i,4);
-        std::string from = result->getValue(i,5);
-        std::string tel = result->getValue(i,6);
+        std::string clazz = result->getValue(i, 2);
+        std::string birth = result->getValue(i, 4);
+        std::string from = result->getValue(i, 5);
+        std::string tel = result->getValue(i, 6);
         u64 id = 0;
         Convert::toNumeric(Sid, id);
-        AdminStudentlist studentlist = {id, name, gender[0], clazz,birth,from,tel};
+        Student studentlist = {id, name, clazz, gender[0], birth, from, tel};
         list.push_back(studentlist);
     }
     result->free();
