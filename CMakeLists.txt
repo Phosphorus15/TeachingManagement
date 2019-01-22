@@ -3,4 +3,6 @@ project(TeachingManagement)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(TeachingManagement main.cpp console.h conui.h db/layer.h sqlite3/sqlite3.h sqlite3/sqlite3.c sqlite3/sqlite3ext.h db/DAO.h)
+add_executable(TeachingManagement main.cpp console.h conui.h db/layer.h sqlite3/sqlite3.h sqlite3/sqlite3.c sqlite3/sqlite3ext.h db/DAO.h h1.h)
+
+set(CMAKE_EXE_LINKER_FLAGS "-static-libgcc -static-libstdc++")

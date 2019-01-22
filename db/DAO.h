@@ -19,14 +19,31 @@ namespace Convert {
         return value;
     }
 
+    template<class T>
+    std::string toString(T value) {
+        std::ostringstream out;
+        out << value;
+        return out.str();
+    }
+
+    std::string format(std::string form, const std::vector<std::string> &attr) {
+        std::ostringstream out;
+        auto it = attr.cbegin();
+        for (auto &c : form) {
+            if (c == '$') out << (*it++);
+            else out << c;
+        }
+        return out.str();
+    }
+
     void split(const std::string &str, std::vector<std::string> &out) {
         std::string buffer;
-        for (auto it = str.begin(); it != str.end(); it++) {
-            if (*it == ',' && !buffer.empty()) {
+        for (char it : str) {
+            if (it == ',' && !buffer.empty()) {
                 out.push_back(buffer);
                 buffer.clear();
             } else {
-                buffer += *it;
+                buffer += it;
             }
         }
         if (!buffer.empty()) out.push_back(buffer);
@@ -54,7 +71,7 @@ namespace DAO {
         int nRow, nColumn;
     public:
 
-        Result(char ** result, int row, int column) {
+        Result(char **result, int row, int column) {
             this->result = result;
             nRow = row, nColumn = column;
         }
@@ -74,6 +91,10 @@ namespace DAO {
         int getIntValue(int row, int column) {
             int result;
             return Convert::toNumeric(getValue(row, column), result);
+        }
+
+        void free() {
+            sqlite3_free_table(result);
         }
 
     };
@@ -100,26 +121,15 @@ namespace DAO {
             sqlite3_exec(dbHandle, stmt, nullptr, nullptr, errmsg);
         }
 
-        void query(const char *stmt, Result ** result, char **errmsg) {
+        void query(const char *stmt, Result **result, char **errmsg) {
             int row, column;
-            char ** res;
+            char **res;
             sqlite3_get_table(dbHandle, stmt, &res, &row, &column, errmsg);
             (*result) = new Result(res, row, column);
         }
 
     };
 
-}
-
-int m() {
-    DAO::Database db("test.db");
-    db.open();
-    db.exec("", nullptr);
-    DAO::Result * result;
-    db.query("select * from students", &result, nullptr);
-    result->size();
-    result->getValue(0, 0);
-    db.close();
 }
 
 #endif //TEACHINGMANAGEMENT_DAO_H
