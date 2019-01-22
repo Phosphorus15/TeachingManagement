@@ -7,54 +7,52 @@
 
 #include <iostream>
 
-
-
-struct SCourselist {
-    std::string Num;
-    std::string Name;
-    int Hour;
-    double Credit;
-    std::string Teacher;
+struct StudentCourselist {
+    std::string cid;
+    std::string name; /**/
+    int hour;
+    double credit;
+    std::string teacher;
 };
 
-struct SScorelist {
-    std::string Num;
-    std::string Name;
-    int Grade;
-    int Credit;
+struct StudentScorelist {
+    std::string cid;
+    std::string name;
+    int grade;
+    int credit;
 };
 
 
-struct TStudentlist {
-     unsigned long long Num;
-    std::string Name;
-    char Gender;
-    std::string ClassNum;
+struct TeacherStudentlist {
+     unsigned long long sid;
+    std::string name;
+    char gender;
+    std::string clazz;
 
 };
 
-struct TScorelist {
-    unsigned long long Num;
-    std::string ClassNum;
-    std::string Name;
-    int rade;
+struct TeacherScorelist {
+    unsigned long long std;
+    std::string clazz; // klass
+    std::string name;
+    int grade;
 };
 
-struct AStudentlist {
-    unsigned long long Num;
-    std::string Name;
-    char Gender;
-    std::string ClassNum;
-    std::string Birthday;
-    std::string From;
-    long int Tel;
+struct AdminStudentlist {
+    unsigned long long sid;
+    std::string name;
+    char gender;
+    std::string clazz;
+    std::string birth;
+    std::string from;
+    long int tel;
 };
 
-struct ATeacherlist {
-    unsigned long long Num;
-    std::string Name;
-    char Gender;
-    std::string Job;
+struct AdminTeacherlist {
+    unsigned long long tid;
+    std::string name;
+    char gender;
+    std::string job;
 
 };
 
