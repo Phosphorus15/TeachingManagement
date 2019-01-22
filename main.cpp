@@ -1,5 +1,7 @@
 const int KEY_UP = 72;
 const int KEY_DOWN = 80;
+const int KEY_LEFT = 75;
+const int KEY_RIGHT = 77;
 
 #include <iostream>
 #include <iomanip>
@@ -106,10 +108,24 @@ void reset1() {
 }
 
 #include "score_list.h"
-#include "teacher
+#include "student information.h"
+#include "teacher information.h"
+#include "course information.h"
+#include "User management menu.h"
+#include "elect_course.h"
+#include "Import student score.h"
+#include "add student information.h"
+#include "add teacher information.h"
+#include "add course information.h"
+#include "edit student information.h"
+#include "edit teacher information.h"
+#include "edit course information.h"
+#include "delete student information.h"
+#include "delete teacher information.h"
+#include "delete course information.h"
 
 int main() {
-    teacher_main::teacher_infoormation();
+    delete_course_information::delete_course_information();
     std::cin.get();
     return 0;
 }
