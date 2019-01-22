@@ -13,7 +13,7 @@ extern "C" {
 
 using namespace console::color;
 
-namespace student_main {
+namespace submenu {
 
     enum type {
         student, teacher, admin, error
@@ -28,7 +28,7 @@ namespace student_main {
 
     const std::string options[4] = {"List Offered Course", "Choose a Course", "Browse selected course","Return"};
 
-    void submenumain() {
+    void submenumenu() {
         console::clearscreen();
         std::string text ="|*********************************************************|\n"
                           "|*                                                       *|\n"
