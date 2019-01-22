@@ -8,7 +8,7 @@
 #endif //TEACHINGMANAGEMENT_EDIT_TEACHER_INFORMATION_H
 #include <iostream>
 #include <conio.h>
-#include "console.h"
+#include "../console.h"
 
 using namespace console::color;
 
@@ -30,7 +30,7 @@ namespace edit_teacher_information {
     }
     void edit_teacher_information(){
         console::clearscreen();
-        std::cout << "请输入您要选择的教师: ";
+        std::cout << "请输入您要添加的教师: ";
         std::string name;
         std::cin >> name;
         Teacher teacher=get_teacher(name);

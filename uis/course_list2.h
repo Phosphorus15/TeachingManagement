@@ -6,7 +6,7 @@
 #define TEACHINGMANAGEMENT_COURSE_H
 
 #include <iostream>
-#include "console.h"
+#include "../console.h"
 #include <vector>
 
 using namespace console::color;
@@ -23,8 +23,8 @@ namespace course_list2 {
     };
 
     std::vector<Course> get_course() {
-        return {{1,"GIS",           48, 3, 123},
-                {2,"Advanced Math", 32, 5, 122}};
+        return {{1, "GIS",           48, 3, 123},
+                {2, "Advanced Math", 32, 5, 122}};
     }
 
     const std::string header = "|-----------------------------------------------------------|\n"
@@ -41,7 +41,7 @@ namespace course_list2 {
         std::cout << header << std::flush;
         auto courses = get_course();
         for (auto &course : courses) {
-            printf(item.c_str(),course.null, course.name.c_str(), course.hour, course.credit, course.teacher_num);
+            printf(item.c_str(), course.null, course.name.c_str(), course.hour, course.credit, course.teacher_num);
         }
         std::cin.get();
     }

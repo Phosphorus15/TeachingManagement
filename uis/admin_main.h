@@ -7,7 +7,7 @@
 
 #include <iostream>
 #include <iomanip>
-#include "console.h"
+#include "../console.h"
 #include <cstdio>
 #include <conio.h>
 
@@ -15,7 +15,7 @@
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wmissing-noreturn"
 extern "C" {
-#include "sqlite3/sqlite3.h"
+#include "../sqlite3/sqlite3.h"
 }
 
 using namespace console::color;

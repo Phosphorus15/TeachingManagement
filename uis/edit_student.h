@@ -8,7 +8,7 @@
 #endif //TEACHINGMANAGEMENT_EDIT_STUDENT_INFORMATION_H
 #include <iostream>
 #include <conio.h>
-#include "console.h"
+#include "../console.h"
 
 using namespace console::color;
 

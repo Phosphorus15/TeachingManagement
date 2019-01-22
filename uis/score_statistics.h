@@ -8,7 +8,7 @@
 #endif //TEACHINGMANAGEMENT_STATISTICAL_TABLE_OF_SCORE_H
 #include <iostream>
 #include <conio.h>
-#include "console.h"
+#include "../console.h"
 
 using namespace console::color;
 
@@ -24,19 +24,19 @@ namespace StatisticalTableofScore{
         return {1,1,1,1,1};
     }
 
-    void StatisticalTableofScore(){
+    void StatisticalTableOfScore(){
         console::clearscreen();
-        std::cout<<"Statistical Table of Score："<<std::endl;
+        std::cout<<"Statistical Table of Score:"<<std::endl;
         Level level = get_level(""); // TODO
-        std::cout<<"A:"<<level.A<<std::endl;
+        std::cout<<"优:"<<level.A<<std::endl;
 
-        std::cout<<"B:"<<level.B<<std::endl;
+        std::cout<<"良:"<<level.B<<std::endl;
 
-        std::cout<<"C:"<<level.C<<std::endl;
+        std::cout<<"中:"<<level.C<<std::endl;
 
-        std::cout<<"D:"<<level.D<<std::endl;
+        std::cout<<"及格:"<<level.D<<std::endl;
 
-        std::cout<<"E:"<<level.E<<std::endl;
+        std::cout<<"不及格:"<<level.E<<std::endl;
 
         system("pause");
         console::clearscreen();

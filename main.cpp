@@ -7,7 +7,7 @@ std::string globalUsername; // Global Accessible Username Object
 std::string globalPassword; // Global Accessible Password
 #include <iomanip>
 #include "console.h"
-#include "student main menu.h"
+#include "uis/student_main.h"
 #include <cstdio>
 #include <conio.h>
 
@@ -27,7 +27,7 @@ enum type {
 
 type check_login(std::string username, std::string password) { return admin; }
 
-#include "student_list.h"
+#include "uis/student_list.h"
 #include "painting.h"
 #include "prelude.h"
 

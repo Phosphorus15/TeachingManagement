@@ -1,18 +1,20 @@
 //
-// Created by Bario on 2019/1/22.
+// Created by Bario on 2019/1/21.
 //
 
-#ifndef TEACHINGMANAGEMENT_ADD_TEACHER_INFORMATION_H
-#define TEACHINGMANAGEMENT_ADD_TEACHER_INFORMATION_H
+#ifndef TEACHINGMANAGEMENT_ADD_STUDENT_INFORMATION_H
+#define TEACHINGMANAGEMENT_ADD_STUDENT_INFORMATION_H
 
-#endif //TEACHINGMANAGEMENT_ADD_TEACHER_INFORMATION_H
+#endif //TEACHINGMANAGEMENT_ADD_STUDENT_INFORMATION_H
+
+
 #include <iostream>
 #include <conio.h>
-#include "console.h"
+#include "../console.h"
 
 using namespace console::color;
 
-namespace add_teacher_information {
+namespace add_student_information {
 
     bool confirm(std::string msg, int line) {
         console::setcursor(0, line);
@@ -37,32 +39,44 @@ namespace add_teacher_information {
             }
         }
     }
-    struct Teacher{
+
+    struct Student {
         std::string id;
+        std::string clazz;
         std::string name;
         char gender;
-        std::string professional_title;
+        std::string birthday;
+        std::string source;
+        long long tel;
     };
-    void save_add_Teacher(Teacher teacher) {
+
+    void save_add_student(Student student) {
         // TODO
     }
-    void add_teacher_information(){
+
+    void add_student_information() {
         console::clearscreen();
-        Teacher teacher;
-        std::cout<<"---请输入老师信息：";
-        std::cout<<"工号：";
-        std::cin>>teacher.id;
-        std::cout<<"姓名：";
-        std::cin>>teacher.name;
-        std::cout<<"性别:";
-        std::cin>>teacher.gender;
-        std::cout<<"教师职称:";
-        std::cin>>teacher.professional_title;
-        save_add_Teacher(teacher);
-        std::cout <<setc(yellow)<< "保存成功!" << std::endl;
-        save_add_Teacher(teacher);
+        Student student;
+        std::cout << "---请输入学生信息：";
+        std::cout << "学号：";
+        std::cin >> student.id;
+        std::cout << "班号：";
+        std::cin >> student.clazz;
+        std::cout << "姓名：";
+        std::cin >> student.name;
+        std::cout << "性别:";
+        std::cin >> student.gender;
+        std::cout << "出生日期:";
+        std::cin >> student.birthday;
+        std::cout << "生源:";
+        std::cin >> student.source;
+        std::cout << "电话:";
+        std::cin >> student.tel;
+        save_add_student(student);
+        std::cout << setc(yellow) << "保存成功!" << std::endl;
+        save_add_student(student);
         if (confirm("保存成功，是否继续录入?", 10)) {
-            add_teacher_information();
+            add_student_information();
         } else {
             console::clearscreen();
         }

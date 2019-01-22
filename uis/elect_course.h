@@ -7,7 +7,7 @@
 
 #include <iostream>
 #include <conio.h>
-#include "console.h"
+#include "../console.h"
 
 namespace electcourse {
 
