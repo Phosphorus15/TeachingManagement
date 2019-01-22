@@ -9,7 +9,7 @@
 
 struct StudentCourselist {
     std::string cid;
-    std::string name; /**/
+    std::string name;
     int hour;
     double credit;
     std::string teacher;
@@ -33,7 +33,7 @@ struct TeacherStudentlist {
 
 struct TeacherScorelist {
     unsigned long long std;
-    std::string clazz; // klass
+    std::string clazz;
     std::string name;
     int grade;
 };

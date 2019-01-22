@@ -87,6 +87,41 @@ void list_student (std::vector<AdminStudentlist> &list)
     result->free();
 }
 
+void teacher_student_list(std::string tid, std::vector<TeacherStudentlist> &list) {
+    DAO::Result *result;
+    database->query(Convert::format("select * from teacherc$", {tid}).c_str(), &result, nullptr);
+    for (int i = 0; i < result->size(); i++) {
+        std::string Sid = result->getValue(i, 2);
+        std::string name = result->getValue(i, 3);
+        std::string gender = result->getValue(i, 5);
+        std::string clazz = result->getValue(i, 4);
+        u64 id = 0;
+        Convert::toNumeric(Sid, id);
+        TeacherStudentlist t = {id, name, gender[0], clazz};
+        list.push_back(t);
+    }
+    result->free();
+}
+
+void TeacherScorelist(std::string tid, std::vector<TeacherStudentlist> &list) {
+    DAO::Result *result;
+    database->query(Convert::format("select * from teacherc$", {tid}).c_str(), &result, nullptr);
+    for (int i = 0; i < result->size(); i++) {
+        std::string Sid = result->getValue(i, 2);
+        std::string name = result->getValue(i, 3);
+        std::string grade = result->getValue(i, 6);
+        std::string clazz = result->getValue(i, 4);
+        u64 id = 0;
+        int grade2;
+        Convert::toNumeric(grade, grade2);
+        Convert::toNumeric(Sid, id);
+        TeacherStudentlist t = {id, name, grade2, clazz};
+        list.push_back(t);
+    }
+    result->free();
+}
+
+
 
 
 int main() {
