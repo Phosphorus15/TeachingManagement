@@ -106,9 +106,10 @@ void reset1() {
 }
 
 #include "student_list.h"
-
+#include "system management menu.h"
+#include "Statistical table of score.h"
 int main() {
-    student_list::studentlist();
+    StatisticalTableofScore::StatisticalTableofScore();
     std::cin.get();
     return 0;
 }
