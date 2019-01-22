@@ -5,7 +5,12 @@
 #ifndef TEACHINGMANAGEMENT_DAO_H
 #define TEACHINGMANAGEMENT_DAO_H
 
+using u64 = unsigned long long;
+
+extern "C" {
 #include "../sqlite3/sqlite3.h"
+};
+
 #include <iostream>
 #include <sstream>
 #include <vector>

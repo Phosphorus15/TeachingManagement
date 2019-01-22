@@ -9,8 +9,13 @@ extern "C" {
 
 using namespace console::color;
 
+void add(std::vector<int> &v) {
+    v.push_back(1);
+    v.push_back(2);
+}
+
 int main() {
-    DAO::Database db("xietian.db");
+    /*DAO::Database db("xietian.db");
     DAO::Result * result;
     db.open();
     db.query("select * from studentM where birth > '2000-6-6'", & result, nullptr);
@@ -23,6 +28,14 @@ int main() {
     }
     db.close();
     std::cout << std::flush;
-    std::cin.get();
+    std::cin.get();*/
+    std::vector<int> a;
+    a.push_back(0);
+    a.push_back(10);
+    a.push_back(11);
+    add(a);
+    for(int x : a) {
+        std::cout << x << std::endl;
+    }
     return 0;
 }
