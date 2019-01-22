@@ -1,6 +1,15 @@
+const int KEY_UP = 72;
+const int KEY_DOWN = 80;
+
 #include <iostream>
+
+std::string globalUsername; // Global Accessible Username Object
+std::string globalPassword; // Global Accessible Password
 #include <iomanip>
 #include "console.h"
+#include "uis/student_main.h"
+#include <cstdio>
+#include <conio.h>
 
 extern "C" {
 #include "sqlite3/sqlite3.h"
@@ -8,21 +17,22 @@ extern "C" {
 
 using namespace console::color;
 
+void reset1();
+
+void reset2();
+
+enum type {
+    student, teacher, admin, error
+};
+
+type check_login(std::string username, std::string password) { return admin; }
+
+#include "uis/student_list.h"
+#include "painting.h"
+#include "prelude.h"
+
 int main() {
-    sqlite3 *db;
-    sqlite3_open("test.sqlite", &db);
-    sqlite3_exec(db, "create students(id int, name varchar(128))", nullptr, nullptr, nullptr);
-    sqlite3_exec(db, "create table if not exists teachers(id int, name varchar(128))", nullptr, nullptr, nullptr);
-    sqlite3_exec(db, "insert into students values(180121, 'Stephen')", nullptr, nullptr, nullptr);
-    sqlite3_exec(db, "insert into students values(180120, 'Bravo')", nullptr, nullptr, nullptr);
-    char **dbResult;
-    int row, column;
-    int index;
-    sqlite3_get_table(db, "select * from students", &dbResult, &row, &column, nullptr);
-    std::cout << row << " " << column << std::endl;
-    sqlite3_free_table(dbResult);
-    sqlite3_close(db);
-    std::cout << setc(blue) << "test" << setc(yellow) << "color" << resetc() << "system" << std::endl;
-    std::cin.get();
+    launch();
     return 0;
 }
+
