@@ -54,6 +54,7 @@ namespace edit_student_information {
         std::cin>>student.tel;
         save_add_student(student);
         std::cout <<setc(yellow)<< "±£´æ³É¹¦!" << std::endl;
+        system("pause");
         console::clearscreen();
 
     }

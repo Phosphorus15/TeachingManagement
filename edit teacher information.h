@@ -44,6 +44,7 @@ namespace edit_teacher_information {
         std::cin>>teacher.professional_title;
         save_add_teacher(teacher);
         std::cout <<setc(yellow)<< "±£´æ³É¹¦!" << std::endl;
+        system("pause");
         console::clearscreen();
 
     }
