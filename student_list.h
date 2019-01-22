@@ -17,7 +17,7 @@ namespace student_list {
 
     struct Student  {
         int num;
-        std::string classno;
+        std::string classnum;
         std::string name;
         char gender;
         std::string birth;
@@ -33,7 +33,7 @@ namespace student_list {
     const std::string header = "|------------------------------------------------------------------------------------|\n"
                                "|                                   Student  List                                    |\n"
                                "|------+--------+------------------+------+------------+----------------+------------|\n"
-                               "| Num  | ClassNo|     Name         |Gender|   Birthday |   From         |    Tel     |\n"
+                               "| Num  |ClassNum|     Name         |Gender|   Birthday |   From         |    Tel     |\n"
                                "|------+--------+------------------+------+------------+----------------+------------|\n";
 
     const std::string item = "|%6d|%8s|%18s|%6c|%12s|%16s|%12s|\n"
@@ -44,7 +44,7 @@ namespace student_list {
         std::cout << header << std::flush;
         auto students = get_student();
         for (auto &student : students) {
-            printf(item.c_str(), student.num,student.classno.c_str(),student.name.c_str(),
+            printf(item.c_str(), student.num,student.classnum.c_str(),student.name.c_str(),
                     student.gender, student.birth.c_str(),student.from.c_str(),student.tel.c_str());
         }
         std::cin.get();
