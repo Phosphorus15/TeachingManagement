@@ -15,6 +15,7 @@ using namespace console::color;
 namespace course_list {
 
     struct Course {
+        int null;
         std::string name;
         int hour;
         int credit;
@@ -22,17 +23,17 @@ namespace course_list {
     };
 
     std::vector<Course> get_course() {
-        return {{"GIS",           48, 3, "ZSG"},
-                {"Advanced Math", 32, 5, "ZYC"}};
+        return {{1,"GIS",           48, 3, "ZSG"},
+                {2,"Advanced Math", 32, 5, "ZYC"}};
     }
 
     const std::string header = "|-------------------------------------------------------|\n"
                                "|                     Course  List                      |\n"
                                "|------+------------------+------+--------+-------------|\n"
-                               "| Null |    Name          | Hour | Credit |   Teahcer   |\n"
+                               "| Null |    Name          | Hour | Credit |   Teacher   |\n"
                                "|------+------------------+------+--------+-------------|\n";
 
-    const std::string item = "|      |  %16s| %5d| %7d| %12s|\n"
+    const std::string item = "|%6d|  %16s| %5d| %7d| %12s|\n"
                              "|------+------------------+------+--------+-------------|\n";
 
     void courselist() {
@@ -40,7 +41,7 @@ namespace course_list {
         std::cout << header << std::flush;
         auto courses = get_course();
         for (auto &course : courses) {
-            printf(item.c_str(), course.name.c_str(), course.hour, course.credit, course.teacher.c_str());
+            printf(item.c_str(),course.null, course.name.c_str(), course.hour, course.credit, course.teacher.c_str());
         }
         std::cin.get();
     }

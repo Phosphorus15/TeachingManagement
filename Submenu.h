@@ -30,16 +30,16 @@ namespace student_main {
 
     void submenumain() {
         console::clearscreen();
-        std::cout << "|*********************************************************|\n"
-                     "|*                                                       *|\n"
-                     "|*                      Submenu                          *|\n"
-                     "|*                                                       *|\n"
-                     "|*                  List Offered Course                  *|\n"
-                     "|*                  Choose a Course                      *|\n"
-                     "|*                  Browse selected course               *|\n"
-                     "|*                  Return                               *|\n"
-                     "|*                                                       *|\n"
-                     "|*********************************************************|" << std::endl;
+        std::string text ="|*********************************************************|\n"
+                          "|*                                                       *|\n"
+                          "|*                      Submenu                          *|\n"
+                          "|*                                                       *|\n"
+                          "|*                  List Offered Course                  *|\n"
+                          "|*                  Choose a Course                      *|\n"
+                          "|*                  Browse selected course               *|\n"
+                          "|*                  Return                               *|\n"
+                          "|*                                                       *|\n"
+                          "|*********************************************************|\n";
 
 
         int ch;

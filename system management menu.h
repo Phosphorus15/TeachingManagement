@@ -24,7 +24,7 @@ using namespace console::color;
 std::string get_username() {
     return "admin";
 }
-
+//属于那种类型？？
 namespace system_management_main {
 
 
@@ -55,7 +55,7 @@ namespace system_management_main {
                            "|               User     Manage                   |\n"
                            "|               Courses  Manage                   |\n"
                            "|               Exit     System                   |\n"
-                           "|-------------------------------------------------|";
+                           "|-------------------------------------------------|\n";
 
         int ch;
         int s = 0;

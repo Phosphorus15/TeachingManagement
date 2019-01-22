@@ -14,3 +14,13 @@
 |                                                     |
 |                   Confirm                           |
 |-----------------------------------------------------|
+
+
+struct srudent {
+     int num;
+     std::string classno;
+     std::string name;
+     char gender;
+     std::string from;
+     std::string tel;
+}

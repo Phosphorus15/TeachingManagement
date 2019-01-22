@@ -105,10 +105,10 @@ void reset1() {
     std::cout << std::setw(12) << ' ' << std::flush;
 }
 
-#include "score_list.h"
+#include "student_list.h"
 
 int main() {
-    score_list::scorelist();
+    student_list::studentlist();
     std::cin.get();
     return 0;
 }

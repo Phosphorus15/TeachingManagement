@@ -20,11 +20,6 @@ std::string get_username() {
 
 namespace student_main {
 
-    void reset1();
-
-    void reset2();
-
-    void reset3();
 
     enum type {
         student, teacher, admin, error
@@ -53,7 +48,7 @@ namespace student_main {
                            "|                                                         |\n"
                            "|                                                         |\n"
                            "|                                                         |\n"
-                           "|*********************************************************|";
+                           "|*********************************************************|\n";
 
         int ch;
         int s = 0;
@@ -85,22 +80,7 @@ namespace student_main {
             }
         }
     }
-
-    void reset3() {
-        console::setcursor(18, 9);
-        std::cout << std::setw(2) << ' ' << std::flush;
-    }
-
-    void reset2() {
-        console::setcursor(18, 8);
-        std::cout << std::setw(2) << ' ' << std::flush;
-    }
-
-    void reset1() {
-        console::setcursor(18, 7);
-        std::cout << std::setw(2) << ' ' << std::flush;
-    }
-
 }
+
 
 
