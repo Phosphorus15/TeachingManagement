@@ -42,10 +42,10 @@ namespace electcourse {
         std::cin >> id;
         Course course = get_course(id);
         std::cout << "----您选择的课程----" << std::endl;
-        std::cout << "课程编号: " << id << std::endl << "课程名称: " << course.name
+        std::cout << "课程编号: " << course.id << std::endl << "课程名称: " << course.name
                   << std::endl << "课程学时: " << course.hour << std::endl
                   <<"课程学分:"<<course.credit<<std::endl <<"任课教师:"<<course.teacher<<std::endl;
-        if(confirm("确认要选修该课程吗?", 7)) {
+        if(confirm("确认要选修该课程吗?", 8)) {
             console::setcursor(0, 9);
             save_elect(id);
             std::cout << setc(green) << "保存成功!" << resetc() << std::endl;

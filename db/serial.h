@@ -52,19 +52,16 @@ void listStudentScore(const std::string &sid, std::vector<Score> &scores) {
 void list_teachers(std::vector<AdminTeacherlist> &list) {
     DAO::Result *result;
     database->query("select * from teachercM", &result, nullptr);
-    std::cout << "enter " << result->size() << std::endl;
     for (int i = 0; i < result->size(); i++) {
         std::string tid = result->getValue(i, 0);
         std::string name = result->getValue(i, 1);
         std::string gender = result->getValue(i, 2);
         std::string job = result->getValue(i, 3);
-        std::cout << "rec" << std::endl;
         u64 id = 0;
         Convert::toNumeric(tid, id);
         AdminTeacherlist teacher = {id, name, gender[0], job};
         list.push_back(teacher);
     }
-    std::cout << "out " << std::endl;
     result->free();
 }
 

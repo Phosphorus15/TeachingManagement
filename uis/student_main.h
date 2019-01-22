@@ -15,7 +15,7 @@ using namespace console::color;
 
 // TODO
 std::string get_username() {
-    return "admin";
+    return globalUsername;
 }
 
 namespace student_main {

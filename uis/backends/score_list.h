@@ -27,12 +27,15 @@ namespace score_list {
             "|------+------------------+-------+--------|\n";
 
     void scorelist() {
+        console::clearscreen();
         std::cout << setc(black, white, false) << "Back" << resetc() << std::endl << std::endl;
-        std::cout << header << std::flush;
         auto scores = get_scores();
+        std::cout << setc(white, blue);
+        std::cout << header << std::flush;
         for (auto &score: scores) {
-            printf(item.c_str(), score.num.c_str(), score.name.c_str(), score.credit, score.grade);
+            printf(item.c_str(), score.num.c_str(), score.name.c_str(), score.grade, score.credit);
         }
+        std::cout << resetc();
         std::cin.get();
     }
 

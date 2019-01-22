@@ -24,13 +24,16 @@ namespace course_list {
                              "|------+------------------+------+--------+-------------|\n";
 
     void courselist() {
+        console::clearscreen();
         std::cout << setc(black, white, false) << "Back" << resetc() << std::endl << std::endl;
-        std::cout << header << std::flush;
         auto courses = list_course();
+        std::cout << setc(white, blue);
+        std::cout << header << std::flush;
         for (auto &course : courses) {
             printf(item.c_str(), course.id.c_str(), course.name.c_str(), course.hour, course.credit,
                    course.teacher.c_str());
         }
+        std::cout << resetc();
         std::cin.get();
     }
 

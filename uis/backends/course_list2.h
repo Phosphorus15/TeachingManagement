@@ -17,20 +17,23 @@ namespace course_list_partial {
     const std::string header = "|-----------------------------------------------------------|\n"
                                "|                     Course  List                          |\n"
                                "|------+------------------+------+--------+-----------------|\n"
-                               "| CoId |    Name          | Hour | Credit |   Teacher   |\n"
+                               "| CoId |    Name          | Hour | Credit |   Teacher       |\n"
                                "|------+------------------+------+--------+-----------------|\n";
 
     const std::string item = "|%6s|%18s|%6d|%8d|%17d|\n"
                              "|------+------------------+------+--------+-----------------|\n";
 
     void courselist2() {
+        console::clearscreen();
         std::cout << setc(black, white, false) << "Back" << resetc() << std::endl << std::endl;
-        std::cout << header << std::flush;
         auto courses = list_course_student_based();
+        std::cout << setc(white, blue);
+        std::cout << header << std::flush;
         for (auto &course : courses) {
             printf(item.c_str(), course.id.c_str(), course.name.c_str(), course.hour, course.credit,
                    course.teacher.c_str());
         }
+        std::cout << resetc();
         std::cin.get();
     }
 

@@ -79,7 +79,6 @@ namespace DAO {
     public:
 
         Result(char **result, int row, int column) {
-            std::cout << "result constructed with " << row << " " << column << std::endl;
             this->result = result;
             nRow = row, nColumn = column;
         }

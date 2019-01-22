@@ -26,12 +26,15 @@ namespace teacher_list {
 
     void teacherlist() {
         console::clearscreen();
+        console::clearscreen();
         std::cout << setc(black, white, false) << "Back" << resetc() << std::endl << std::endl;
-        std::cout << header << std::flush;
         auto teachers = get_teachers();
+        std::cout << setc(white, blue);
+        std::cout << header << std::flush;
         for (auto &teacher: teachers) {
             printf(item, teacher.tid, teacher.name.c_str(), teacher.gender, teacher.job.c_str());
         }
+        std::cout << resetc();
         std::cin.get();
     }
 

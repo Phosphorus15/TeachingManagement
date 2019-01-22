@@ -105,7 +105,7 @@ void save_edit_teacher(std::string &name, const Teacher &teacher) {
 
 Course get_course(std::string id) {
     DAO::Result *result;
-    database->query(Convert::format("select * from classes where cid = '$'", {std::move(id)}).c_str(), &result,
+    database->query(Convert::format("select * from classes where cid = '$'", {id}).c_str(), &result,
                     nullptr);
     Course course;
     course.id = result->getValue(0, 0);
@@ -115,6 +115,7 @@ Course get_course(std::string id) {
     course.hour = Convert::toNumeric(result->getValue(0, 3), t);
     course.teacher = result->getValue(0, 4);
     result->free();
+    return course;
 }
 
 void save_elect(std::string id) {
@@ -159,6 +160,7 @@ std::vector<Course> list_course() {
         course.teacher = result->getValue(i, 4);
         courses.push_back(course);
     }
+    result->free();
     return courses;
 }
 
@@ -253,7 +255,7 @@ Level get_level() {
 
 void save_student_score(Score score) {
     database->exec(
-            Convert::format("update set grade = $ where Sid = $", {Convert::toString(score.grade), score.num}).c_str(),
+            Convert::format("update teacherc$ set grade = $ where Sid = $", {globalUsername, Convert::toString(score.grade), score.num}).c_str(),
             nullptr);
 }
 
