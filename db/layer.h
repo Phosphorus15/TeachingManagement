@@ -45,7 +45,7 @@ struct AdminStudentlist {
     std::string clazz;
     std::string birth;
     std::string from;
-    long int tel;
+    std::string tel;
 };
 
 struct AdminTeacherlist {

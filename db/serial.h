@@ -56,6 +56,27 @@ void list_teachers(std::vector<AdminTeacherlist> &list) {
     }
     result->free();
 }
+void list_student (std::vector<AdminStudentlist> &list)
+{
+    DAO::Result *result;
+    database->query("select * from studentM", &result, nullptr);
+    for(int i = 0 ; i < result -> size(); i ++) {
+        std::string Sid = result->getValue(i, 0);
+        std::string name = result->getValue(i, 1);
+        std::string gender = result->getValue(i, 3);
+        std::string clazz=result->getValue(i,2);
+        std::string birth=result->getValue(i,4);
+        std::string from = result->getValue(i,5);
+        std::string tel = result->getValue(i,6);
+        u64 id = 0;
+        Convert::toNumeric(Sid, id);
+        AdminStudentlist studentlist = {id, name, gender[0], clazz,birth,from,tel};
+        list.push_back(studentlist);
+    }
+    result->free();
+}
+
+
 
 int main() {
     init();
